@@ -1,0 +1,23 @@
+#include "Delay.h"
+#include "Timer0.h"
+
+void delay_ms(uint16_t milli) {
+   uint8_t sreg = SREG;   //save status reg
+   sei();
+   currentMilliSeconds = 0;
+   while(currentMilliSeconds < milli);
+   SREG = sreg;
+}
+
+/*
+void delay(unsigned long int x)
+{
+	for (unsigned long int j=0; j<x; j++)
+	{
+		for (unsigned int i=0; i<100; i++) //137 more=better
+		{
+			asm("nop");
+		}
+	}
+}
+*/

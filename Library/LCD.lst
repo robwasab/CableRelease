@@ -1,0 +1,459 @@
+   1               		.file	"LCD.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	lcd_write
+  18               	lcd_write:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	/* stack size = 0 */
+  25               	.L__stack_usage = 0
+  26               	.LM2:
+  27 0000 2FB7      		in r18,__SREG__
+  28               	.LVL1:
+  29               	.LM3:
+  30               	/* #APP */
+  31               	 ;  61 "../Library/LCD.c" 1
+  32 0002 F894      		cli
+  33               	 ;  0 "" 2
+  34               	/* #NOAPP */
+  35 0004 E091 0000 		lds r30,PORTBbits
+  36 0008 F091 0000 		lds r31,PORTBbits+1
+  37               	.LM4:
+  38 000c 87FF      		sbrs r24,7
+  39 000e 00C0      		rjmp .L2
+  40               	.LM5:
+  41 0010 9081      		ld r25,Z
+  42 0012 9064      		ori r25,lo8(64)
+  43 0014 00C0      		rjmp .L18
+  44               	.L2:
+  45               	.LM6:
+  46 0016 9081      		ld r25,Z
+  47 0018 9F7B      		andi r25,lo8(-65)
+  48               	.L18:
+  49 001a 9083      		st Z,r25
+  50 001c E091 0000 		lds r30,PORTBbits
+  51 0020 F091 0000 		lds r31,PORTBbits+1
+  52               	.LM7:
+  53 0024 86FF      		sbrs r24,6
+  54 0026 00C0      		rjmp .L4
+  55               	.LM8:
+  56 0028 9081      		ld r25,Z
+  57 002a 9062      		ori r25,lo8(32)
+  58 002c 00C0      		rjmp .L19
+  59               	.L4:
+  60               	.LM9:
+  61 002e 9081      		ld r25,Z
+  62 0030 9F7D      		andi r25,lo8(-33)
+  63               	.L19:
+  64 0032 9083      		st Z,r25
+  65 0034 E091 0000 		lds r30,PORTBbits
+  66 0038 F091 0000 		lds r31,PORTBbits+1
+  67               	.LM10:
+  68 003c 85FF      		sbrs r24,5
+  69 003e 00C0      		rjmp .L6
+  70               	.LM11:
+  71 0040 9081      		ld r25,Z
+  72 0042 9460      		ori r25,lo8(4)
+  73 0044 00C0      		rjmp .L20
+  74               	.L6:
+  75               	.LM12:
+  76 0046 9081      		ld r25,Z
+  77 0048 9B7F      		andi r25,lo8(-5)
+  78               	.L20:
+  79 004a 9083      		st Z,r25
+  80 004c E091 0000 		lds r30,PORTBbits
+  81 0050 F091 0000 		lds r31,PORTBbits+1
+  82               	.LM13:
+  83 0054 84FF      		sbrs r24,4
+  84 0056 00C0      		rjmp .L8
+  85               	.LM14:
+  86 0058 9081      		ld r25,Z
+  87 005a 9260      		ori r25,lo8(2)
+  88 005c 00C0      		rjmp .L21
+  89               	.L8:
+  90               	.LM15:
+  91 005e 9081      		ld r25,Z
+  92 0060 9D7F      		andi r25,lo8(-3)
+  93               	.L21:
+  94 0062 9083      		st Z,r25
+  95               	.LM16:
+  96 0064 E091 0000 		lds r30,PORTBbits
+  97 0068 F091 0000 		lds r31,PORTBbits+1
+  98 006c 9081      		ld r25,Z
+  99 006e 9160      		ori r25,lo8(1)
+ 100 0070 9083      		st Z,r25
+ 101 0072 9081      		ld r25,Z
+ 102 0074 9E7F      		andi r25,lo8(-2)
+ 103 0076 9083      		st Z,r25
+ 104               	.LM17:
+ 105 0078 83FF      		sbrs r24,3
+ 106 007a 00C0      		rjmp .L10
+ 107               	.LM18:
+ 108 007c 9081      		ld r25,Z
+ 109 007e 9064      		ori r25,lo8(64)
+ 110 0080 00C0      		rjmp .L22
+ 111               	.L10:
+ 112               	.LM19:
+ 113 0082 9081      		ld r25,Z
+ 114 0084 9F7B      		andi r25,lo8(-65)
+ 115               	.L22:
+ 116 0086 9083      		st Z,r25
+ 117               	.LM20:
+ 118 0088 82FF      		sbrs r24,2
+ 119 008a 00C0      		rjmp .L12
+ 120               	.LM21:
+ 121 008c 9081      		ld r25,Z
+ 122 008e 9062      		ori r25,lo8(32)
+ 123 0090 00C0      		rjmp .L23
+ 124               	.L12:
+ 125               	.LM22:
+ 126 0092 9081      		ld r25,Z
+ 127 0094 9F7D      		andi r25,lo8(-33)
+ 128               	.L23:
+ 129 0096 9083      		st Z,r25
+ 130               	.LM23:
+ 131 0098 81FF      		sbrs r24,1
+ 132 009a 00C0      		rjmp .L14
+ 133               	.LM24:
+ 134 009c 9081      		ld r25,Z
+ 135 009e 9460      		ori r25,lo8(4)
+ 136 00a0 00C0      		rjmp .L24
+ 137               	.L14:
+ 138               	.LM25:
+ 139 00a2 9081      		ld r25,Z
+ 140 00a4 9B7F      		andi r25,lo8(-5)
+ 141               	.L24:
+ 142 00a6 9083      		st Z,r25
+ 143               	.LM26:
+ 144 00a8 80FF      		sbrs r24,0
+ 145 00aa 00C0      		rjmp .L16
+ 146               	.LM27:
+ 147 00ac 8081      		ld r24,Z
+ 148               	.LVL2:
+ 149 00ae 8260      		ori r24,lo8(2)
+ 150 00b0 00C0      		rjmp .L25
+ 151               	.LVL3:
+ 152               	.L16:
+ 153               	.LM28:
+ 154 00b2 8081      		ld r24,Z
+ 155               	.LVL4:
+ 156 00b4 8D7F      		andi r24,lo8(-3)
+ 157               	.L25:
+ 158 00b6 8083      		st Z,r24
+ 159               	.LM29:
+ 160 00b8 8081      		ld r24,Z
+ 161 00ba 8160      		ori r24,lo8(1)
+ 162 00bc 8083      		st Z,r24
+ 163 00be 8081      		ld r24,Z
+ 164 00c0 8E7F      		andi r24,lo8(-2)
+ 165 00c2 8083      		st Z,r24
+ 166               	.LVL5:
+ 167               	.LBB16:
+ 168               	.LBB17:
+ 169               	.LM30:
+ 170 00c4 8AE6      		 ldi r24,lo8(106)
+ 171 00c6 8A95      	    1:dec r24
+ 172 00c8 01F4      	    brne 1b
+ 173 00ca 00C0      		rjmp .
+ 174               	.LBE17:
+ 175               	.LBE16:
+ 176               	.LM31:
+ 177 00cc 2FBF      		out __SREG__,r18
+ 178               	/* epilogue start */
+ 179               	.LM32:
+ 180 00ce 0895      		ret
+ 181               	.LFE6:
+ 183               	.global	lcd_clear
+ 185               	lcd_clear:
+ 186               	.LFB7:
+ 187               	.LM33:
+ 188               	/* prologue: function */
+ 189               	/* frame size = 0 */
+ 190               	/* stack size = 0 */
+ 191               	.L__stack_usage = 0
+ 192               	.LM34:
+ 193 00d0 E091 0000 		lds r30,PORTDbits
+ 194 00d4 F091 0000 		lds r31,PORTDbits+1
+ 195 00d8 8081      		ld r24,Z
+ 196 00da 8F7B      		andi r24,lo8(-65)
+ 197 00dc 8083      		st Z,r24
+ 198               	.LM35:
+ 199 00de 81E0      		ldi r24,lo8(1)
+ 200 00e0 00D0      		rcall lcd_write
+ 201               	.LVL6:
+ 202               	.LBB18:
+ 203               	.LBB19:
+ 204               	.LM36:
+ 205 00e2 8FE9      		 ldi r24,lo8(3999)
+ 206 00e4 9FE0      	    ldi r25,hi8(3999)
+ 207 00e6 0197      	    1:sbiw r24,1
+ 208 00e8 01F4      	    brne 1b
+ 209 00ea 00C0      		rjmp .
+ 210 00ec 0000      		nop
+ 211               	/* epilogue start */
+ 212               	.LBE19:
+ 213               	.LBE18:
+ 214               	.LM37:
+ 215 00ee 0895      		ret
+ 216               	.LFE7:
+ 218               	.global	lcd_puts
+ 220               	lcd_puts:
+ 221               	.LFB8:
+ 222               	.LM38:
+ 223               	.LVL7:
+ 224 00f0 CF93      		push r28
+ 225 00f2 DF93      		push r29
+ 226               	/* prologue: function */
+ 227               	/* frame size = 0 */
+ 228               	/* stack size = 2 */
+ 229               	.L__stack_usage = 2
+ 230               	.LM39:
+ 231 00f4 E091 0000 		lds r30,PORTDbits
+ 232 00f8 F091 0000 		lds r31,PORTDbits+1
+ 233 00fc 2081      		ld r18,Z
+ 234 00fe 2064      		ori r18,lo8(64)
+ 235 0100 2083      		st Z,r18
+ 236 0102 C82F      		mov r28,r24
+ 237 0104 D92F      		mov r29,r25
+ 238               	.LM40:
+ 239 0106 00C0      		rjmp .L28
+ 240               	.LVL8:
+ 241               	.L29:
+ 242               	.LM41:
+ 243 0108 00D0      		rcall lcd_write
+ 244               	.L28:
+ 245               	.LM42:
+ 246 010a 8991      		ld r24,Y+
+ 247 010c 8823      		tst r24
+ 248 010e 01F4      		brne .L29
+ 249               	/* epilogue start */
+ 250               	.LM43:
+ 251 0110 DF91      		pop r29
+ 252 0112 CF91      		pop r28
+ 253 0114 0895      		ret
+ 254               	.LFE8:
+ 256               	.global	lcd_putch
+ 258               	lcd_putch:
+ 259               	.LFB9:
+ 260               	.LM44:
+ 261               	.LVL9:
+ 262               	/* prologue: function */
+ 263               	/* frame size = 0 */
+ 264               	/* stack size = 0 */
+ 265               	.L__stack_usage = 0
+ 266               	.LM45:
+ 267 0116 E091 0000 		lds r30,PORTDbits
+ 268 011a F091 0000 		lds r31,PORTDbits+1
+ 269 011e 9081      		ld r25,Z
+ 270 0120 9064      		ori r25,lo8(64)
+ 271 0122 9083      		st Z,r25
+ 272               	.LM46:
+ 273 0124 00D0      		rcall lcd_write
+ 274               	.LVL10:
+ 275               	/* epilogue start */
+ 276               	.LM47:
+ 277 0126 0895      		ret
+ 278               	.LFE9:
+ 280               	.global	lcd_goto
+ 282               	lcd_goto:
+ 283               	.LFB10:
+ 284               	.LM48:
+ 285               	.LVL11:
+ 286               	/* prologue: function */
+ 287               	/* frame size = 0 */
+ 288               	/* stack size = 0 */
+ 289               	.L__stack_usage = 0
+ 290               	.LM49:
+ 291 0128 E091 0000 		lds r30,PORTDbits
+ 292 012c F091 0000 		lds r31,PORTDbits+1
+ 293 0130 9081      		ld r25,Z
+ 294 0132 9F7B      		andi r25,lo8(-65)
+ 295 0134 9083      		st Z,r25
+ 296               	.LM50:
+ 297 0136 6623      		tst r22
+ 298 0138 01F4      		brne .L32
+ 299               	.LM51:
+ 300 013a 8058      		subi r24,lo8(-(-128))
+ 301               	.LVL12:
+ 302 013c 00C0      		rjmp .L34
+ 303               	.LVL13:
+ 304               	.L32:
+ 305               	.LM52:
+ 306 013e 8054      		subi r24,lo8(-(-64))
+ 307               	.LVL14:
+ 308               	.L34:
+ 309 0140 00D0      		rcall lcd_write
+ 310               	.LVL15:
+ 311 0142 0895      		ret
+ 312               	.LFE10:
+ 314               	.global	lcd_init
+ 316               	lcd_init:
+ 317               	.LFB11:
+ 318               	.LM53:
+ 319               	/* prologue: function */
+ 320               	/* frame size = 0 */
+ 321               	/* stack size = 0 */
+ 322               	.L__stack_usage = 0
+ 323               	.LM54:
+ 324 0144 E091 0000 		lds r30,PORTDbits
+ 325 0148 F091 0000 		lds r31,PORTDbits+1
+ 326 014c 8081      		ld r24,Z
+ 327 014e 8F7B      		andi r24,lo8(-65)
+ 328 0150 8083      		st Z,r24
+ 329               	.LVL16:
+ 330               	.LBB20:
+ 331               	.LBB21:
+ 332               	.LM55:
+ 333 0152 8FE2      		 ldi r24,lo8(29999)
+ 334 0154 95E7      	    ldi r25,hi8(29999)
+ 335 0156 0197      	    1:sbiw r24,1
+ 336 0158 01F4      	    brne 1b
+ 337 015a 00C0      		rjmp .
+ 338 015c 0000      		nop
+ 339               	.LBE21:
+ 340               	.LBE20:
+ 341               	.LM56:
+ 342 015e E091 0000 		lds r30,PORTBbits
+ 343 0162 F091 0000 		lds r31,PORTBbits+1
+ 344 0166 8081      		ld r24,Z
+ 345 0168 8260      		ori r24,lo8(2)
+ 346 016a 8083      		st Z,r24
+ 347               	.LM57:
+ 348 016c 8081      		ld r24,Z
+ 349 016e 8460      		ori r24,lo8(4)
+ 350 0170 8083      		st Z,r24
+ 351               	.LM58:
+ 352 0172 8081      		ld r24,Z
+ 353 0174 8160      		ori r24,lo8(1)
+ 354 0176 8083      		st Z,r24
+ 355 0178 8081      		ld r24,Z
+ 356 017a 8E7F      		andi r24,lo8(-2)
+ 357 017c 8083      		st Z,r24
+ 358               	.LVL17:
+ 359               	.LBB22:
+ 360               	.LBB23:
+ 361               	.LM59:
+ 362 017e 8FE0      		 ldi r24,lo8(9999)
+ 363 0180 97E2      	    ldi r25,hi8(9999)
+ 364 0182 0197      	    1:sbiw r24,1
+ 365 0184 01F4      	    brne 1b
+ 366 0186 00C0      		rjmp .
+ 367 0188 0000      		nop
+ 368               	.LBE23:
+ 369               	.LBE22:
+ 370               	.LM60:
+ 371 018a E091 0000 		lds r30,PORTBbits
+ 372 018e F091 0000 		lds r31,PORTBbits+1
+ 373 0192 8081      		ld r24,Z
+ 374 0194 8160      		ori r24,lo8(1)
+ 375 0196 8083      		st Z,r24
+ 376 0198 8081      		ld r24,Z
+ 377 019a 8E7F      		andi r24,lo8(-2)
+ 378 019c 8083      		st Z,r24
+ 379               	.LVL18:
+ 380               	.LBB24:
+ 381               	.LBB25:
+ 382               	.LM61:
+ 383 019e 87EC      		 ldi r24,lo8(199)
+ 384 01a0 90E0      	    ldi r25,hi8(199)
+ 385 01a2 0197      	    1:sbiw r24,1
+ 386 01a4 01F4      	    brne 1b
+ 387 01a6 00C0      		rjmp .
+ 388 01a8 0000      		nop
+ 389               	.LBE25:
+ 390               	.LBE24:
+ 391               	.LM62:
+ 392 01aa E091 0000 		lds r30,PORTBbits
+ 393 01ae F091 0000 		lds r31,PORTBbits+1
+ 394 01b2 8081      		ld r24,Z
+ 395 01b4 8160      		ori r24,lo8(1)
+ 396 01b6 8083      		st Z,r24
+ 397 01b8 8081      		ld r24,Z
+ 398 01ba 8E7F      		andi r24,lo8(-2)
+ 399 01bc 8083      		st Z,r24
+ 400               	.LVL19:
+ 401               	.LBB26:
+ 402               	.LBB27:
+ 403               	.LM63:
+ 404 01be 8FE0      		 ldi r24,lo8(9999)
+ 405 01c0 97E2      	    ldi r25,hi8(9999)
+ 406 01c2 0197      	    1:sbiw r24,1
+ 407 01c4 01F4      	    brne 1b
+ 408 01c6 00C0      		rjmp .
+ 409 01c8 0000      		nop
+ 410               	.LBE27:
+ 411               	.LBE26:
+ 412               	.LM64:
+ 413 01ca E091 0000 		lds r30,PORTBbits
+ 414 01ce F091 0000 		lds r31,PORTBbits+1
+ 415 01d2 8081      		ld r24,Z
+ 416 01d4 8D7F      		andi r24,lo8(-3)
+ 417 01d6 8083      		st Z,r24
+ 418               	.LM65:
+ 419 01d8 8081      		ld r24,Z
+ 420 01da 8160      		ori r24,lo8(1)
+ 421 01dc 8083      		st Z,r24
+ 422 01de 8081      		ld r24,Z
+ 423 01e0 8E7F      		andi r24,lo8(-2)
+ 424 01e2 8083      		st Z,r24
+ 425               	.LVL20:
+ 426               	.LBB28:
+ 427               	.LBB29:
+ 428               	.LM66:
+ 429 01e4 9AE6      		 ldi r25,lo8(106)
+ 430 01e6 9A95      	    1:dec r25
+ 431 01e8 01F4      	    brne 1b
+ 432 01ea 00C0      		rjmp .
+ 433               	.LBE29:
+ 434               	.LBE28:
+ 435               	.LM67:
+ 436 01ec 88E2      		ldi r24,lo8(40)
+ 437 01ee 00D0      		rcall lcd_write
+ 438               	.LM68:
+ 439 01f0 8CE0      		ldi r24,lo8(12)
+ 440 01f2 00D0      		rcall lcd_write
+ 441               	.LM69:
+ 442 01f4 86E0      		ldi r24,lo8(6)
+ 443 01f6 00D0      		rcall lcd_write
+ 444               	.LM70:
+ 445 01f8 81E0      		ldi r24,lo8(1)
+ 446 01fa 00D0      		rcall lcd_write
+ 447               	/* epilogue start */
+ 448               	.LM71:
+ 449 01fc 0895      		ret
+ 450               	.LFE11:
+ 452               	.global	PORTBbits
+ 453               		.data
+ 456               	PORTBbits:
+ 457 0000 3800      		.word	56
+ 458               	.global	PORTDbits
+ 461               	PORTDbits:
+ 462 0002 3200      		.word	50
+ 527               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 LCD.c
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:2      *ABS*:0000003f __SREG__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:3      *ABS*:0000003e __SP_H__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:4      *ABS*:0000003d __SP_L__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:5      *ABS*:00000034 __CCP__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:6      *ABS*:00000000 __tmp_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:7      *ABS*:00000001 __zero_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:18     .text:00000000 lcd_write
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:456    .data:00000000 PORTBbits
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:185    .text:000000d0 lcd_clear
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:461    .data:00000002 PORTDbits
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:220    .text:000000f0 lcd_puts
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:258    .text:00000116 lcd_putch
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:282    .text:00000128 lcd_goto
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccKcMPYI.s:316    .text:00000144 lcd_init
+
+UNDEFINED SYMBOLS
+__do_copy_data

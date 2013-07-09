@@ -1,0 +1,109 @@
+   1               		.file	"Delay.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	delay_ms
+  18               	delay_ms:
+  19               	.LFB0:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	/* stack size = 0 */
+  25               	.L__stack_usage = 0
+  26               	.LM2:
+  27 0000 4FB7      		in r20,__SREG__
+  28               	.LVL1:
+  29               	.LM3:
+  30               	/* #APP */
+  31               	 ;  6 "../Library/Delay.c" 1
+  32 0002 7894      		sei
+  33               	 ;  0 "" 2
+  34               	.LM4:
+  35               	/* #NOAPP */
+  36 0004 1092 0000 		sts currentMilliSeconds+1,__zero_reg__
+  37 0008 1092 0000 		sts currentMilliSeconds,__zero_reg__
+  38               	.L2:
+  39               	.LM5:
+  40 000c 2091 0000 		lds r18,currentMilliSeconds
+  41 0010 3091 0000 		lds r19,currentMilliSeconds+1
+  42 0014 2817      		cp r18,r24
+  43 0016 3907      		cpc r19,r25
+  44 0018 00F0      		brlo .L2
+  45               	.LM6:
+  46 001a 4FBF      		out __SREG__,r20
+  47               	/* epilogue start */
+  48               	.LM7:
+  49 001c 0895      		ret
+  50               	.LFE0:
+  52               	.global	delay
+  54               	delay:
+  55               	.LFB1:
+  56               	.LM8:
+  57               	.LVL2:
+  58               	/* prologue: function */
+  59               	/* frame size = 0 */
+  60               	/* stack size = 0 */
+  61               	.L__stack_usage = 0
+  62 001e 9B01      		movw r18,r22
+  63 0020 AC01      		movw r20,r24
+  64               	.LVL3:
+  65               	.LBB2:
+  66               	.LM9:
+  67 0022 80E0      		ldi r24,lo8(0)
+  68 0024 90E0      		ldi r25,hi8(0)
+  69 0026 DC01      		movw r26,r24
+  70 0028 00C0      		rjmp .L5
+  71               	.LVL4:
+  72               	.L7:
+  73               	.LM10:
+  74 002a 64E6      		ldi r22,lo8(100)
+  75 002c 70E0      		ldi r23,hi8(100)
+  76               	.L6:
+  77               	.LBB3:
+  78               	.LM11:
+  79               	/* #APP */
+  80               	 ;  18 "../Library/Delay.c" 1
+  81 002e 0000      		nop
+  82               	 ;  0 "" 2
+  83               	/* #NOAPP */
+  84 0030 6150      		subi r22,lo8(-(-1))
+  85 0032 7040      		sbci r23,hi8(-(-1))
+  86               	.LM12:
+  87 0034 01F4      		brne .L6
+  88               	.LBE3:
+  89               	.LM13:
+  90 0036 0196      		adiw r24,1
+  91 0038 A11D      		adc r26,__zero_reg__
+  92 003a B11D      		adc r27,__zero_reg__
+  93               	.LVL5:
+  94               	.L5:
+  95               	.LM14:
+  96 003c 8217      		cp r24,r18
+  97 003e 9307      		cpc r25,r19
+  98 0040 A407      		cpc r26,r20
+  99 0042 B507      		cpc r27,r21
+ 100 0044 00F0      		brlo .L7
+ 101               	/* epilogue start */
+ 102               	.LBE2:
+ 103               	.LM15:
+ 104 0046 0895      		ret
+ 105               	.LFE1:
+ 139               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Delay.c
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccPnAmPS.s:2      *ABS*:0000003f __SREG__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccPnAmPS.s:3      *ABS*:0000003e __SP_H__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccPnAmPS.s:4      *ABS*:0000003d __SP_L__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccPnAmPS.s:5      *ABS*:00000034 __CCP__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccPnAmPS.s:6      *ABS*:00000000 __tmp_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccPnAmPS.s:7      *ABS*:00000001 __zero_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccPnAmPS.s:18     .text:00000000 delay_ms
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccPnAmPS.s:54     .text:0000001e delay
+
+UNDEFINED SYMBOLS
+currentMilliSeconds

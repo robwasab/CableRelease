@@ -1,0 +1,8 @@
+#include "UART.h"
+#include "LCD.h"
+
+void printString(char * s);
+void printInt(uint8_t * b, uint8_t bytes);
+
+#define GENERIC_OUTPUT(foo) UART_sendByte(foo)
+

@@ -1,0 +1,189 @@
+#include <avr/io.h>
+#include <stdlib.h>
+#include <util/delay.h>
+#include <avr/interrupt.h>
+
+/*WARNING, you must initialize the directions of your desired port values somewhere else, not here as this code
+  Needs to be as general as possible
+ */
+
+#define delay_ms(d) _delay_ms(d)
+#define delay_us(d) _delay_us(d)
+
+typedef struct {
+   uint8_t bit0 : 1;
+   uint8_t bit1 : 1;
+   uint8_t bit2 : 1;
+   uint8_t bit3 : 1;
+   uint8_t bit4 : 1;
+   uint8_t bit5 : 1;
+   uint8_t bit6 : 1;
+   uint8_t bit7 : 1;
+} PortBits;
+
+volatile PortBits * PORTBbits = (PortBits*) &PORTB;
+volatile PortBits * PORTDbits = (PortBits*) &PORTD;
+
+#define LCD_RS PORTDbits->bit6    // Register select
+#define LCD_EN PORTBbits->bit0    // Enable
+#define LCD_D4 PORTBbits->bit1    // Data bits
+#define LCD_D5 PORTBbits->bit2    // Data bits
+#define LCD_D6 PORTBbits->bit5    // Data bits
+#define LCD_D7 PORTBbits->bit6    // Data bits
+
+#define    LCD_STROBE    LCD_EN = 1; delay_us(900); LCD_EN=0
+
+/*
+ *    LCD interface example
+ *    Uses routines from delay.c
+ *    This code will interface to a standard LCD controller
+ *    like the Hitachi HD44780. It uses LCD display in 4 bit mode, with
+ *    the hardware connected as follows (the standard 14 pin 
+ *    LCD connector is used):
+ *    
+ *    PORTB bits 0-3 are connected to the LCD data bits 4-7 (high nibble)
+ *    PORTA bit 2 is connected to the LCD RS input (register select)
+ *    PORTA bit 3 is connected to the LCD EN bit (enable)
+ *    
+ *    To use these routines, set up the port I/O (TRISA, TRISB) then
+ *    call lcd_init(), then other routines as required.
+ *
+ * Copywrite Craig Lee 1998
+ *    
+ */
+
+/* write a byte to the LCD in 4 bit mode */
+
+void
+lcd_write(unsigned char c)
+{
+   uint8_t sreg = SREG;   //save status reg
+   cli();
+    if(c & 0x80) LCD_D7=1; else LCD_D7=0;
+    if(c & 0x40) LCD_D6=1; else LCD_D6=0;
+    if(c & 0x20) LCD_D5=1; else LCD_D5=0;
+    if(c & 0x10) LCD_D4=1; else LCD_D4=0;
+    LCD_STROBE;
+    if(c & 0x08) LCD_D7=1; else LCD_D7=0;
+    if(c & 0x04) LCD_D6=1; else LCD_D6=0;
+    if(c & 0x02) LCD_D5=1; else LCD_D5=0;
+    if(c & 0x01) LCD_D4=1; else LCD_D4=0;
+    LCD_STROBE;    
+    delay_us(40);
+    SREG = sreg;
+}
+
+/*
+ *     Clear and home the LCD
+ */
+
+void
+lcd_clear(void)
+{
+    LCD_RS = 0;
+
+    lcd_write(0x1);
+    delay_ms(2);
+}
+
+/* write a string of chars to the LCD */
+
+void
+lcd_puts(const char * s)
+{
+    LCD_RS = 1;    // write characters
+
+    while(*s) lcd_write(*s++);
+}
+
+/* write one character to the LCD */
+
+void
+lcd_putch(unsigned char c)
+{
+    LCD_RS = 1;    // write characters
+
+    lcd_write(c);
+}
+
+
+/*
+ * Go to the specified position
+ */
+
+void
+lcd_goto(unsigned char pos,unsigned char line)
+{
+    LCD_RS = 0;
+    if (line==0)
+    lcd_write(0x80 + pos);
+    else
+    lcd_write(0x80 + pos+ 0x40);
+}
+    
+/* initialise the LCD - put into 4 bit mode */
+
+void
+lcd_init(void)
+{
+    //This function assumes that you have initialized 
+    //your desired GPIO pins
+        
+    LCD_RS = 0;    // write control bytes
+
+    delay_ms(15);// power on delay
+
+    LCD_D4 = 1;    // init!    
+    LCD_D5 = 1; //
+    LCD_STROBE;    
+    delay_ms(5);
+
+    LCD_STROBE;    // init!    
+    delay_us(100);
+
+    LCD_STROBE;    // init!    
+    delay_ms(5);
+
+    LCD_D4 = 0;    // set 4 bit mode
+    LCD_STROBE;    
+    delay_us(40);
+    
+    lcd_write(0x28);// 4 bit mode, 1/16 duty, 5x8 font, 2lines
+    lcd_write(0x0C);// display on
+    lcd_write(0x06);// entry mode advance cursor
+    lcd_write(0x01);// clear display and reset cursor
+}
+
+#ifdef DEBUG
+void test(void)
+{
+char buf[4];
+char b1,b2,b3;
+
+lcd_init();
+      
+while (1)
+      {  
+      lcd_clear(); 
+      lcd_goto(0,0);
+      lcd_puts("Vh:") ; 
+      itoa( b1  , buf, 16); 
+      lcd_puts(buf) ;      
+      lcd_putch('V');  
+      lcd_goto(8,0);
+      lcd_puts("Vl:") ;
+      itoa(b2  , buf, 16); 
+      lcd_puts(buf) ;  
+      lcd_putch('V');     
+      lcd_goto(0,1);
+      lcd_puts("Freq.:") ;
+      itoa(b3, buf, 16); 
+      lcd_puts(buf) ;  
+      lcd_puts("Hz") ;      
+      b1++;
+      b2--;
+      b3+=2;
+      delay_ms(1000);
+      }
+}
+#endif

@@ -1,0 +1,249 @@
+   1               		.file	"SPI.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	SPI_initializeMaster
+  18               	SPI_initializeMaster:
+  19               	.LFB0:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	/* stack size = 0 */
+  24               	.L__stack_usage = 0
+  25               	.LM2:
+  26 0000 88B3      		in r24,56-32
+  27 0002 806C      		ori r24,lo8(-64)
+  28 0004 88BB      		out 56-32,r24
+  29               	.LM3:
+  30 0006 969A      		sbi 50-32,6
+  31               	.LM4:
+  32 0008 87B3      		in r24,55-32
+  33 000a 806C      		ori r24,lo8(-64)
+  34 000c 87BB      		out 55-32,r24
+  35               	.LM5:
+  36 000e BD98      		cbi 55-32,5
+  37               	.LM6:
+  38 0010 8E9A      		sbi 49-32,6
+  39               	.LM7:
+  40 0012 88E1      		ldi r24,lo8(24)
+  41 0014 8DB9      		out 45-32,r24
+  42               	/* epilogue start */
+  43               	.LM8:
+  44 0016 0895      		ret
+  45               	.LFE0:
+  47               	.global	SPI_send
+  49               	SPI_send:
+  50               	.LFB1:
+  51               	.LM9:
+  52               	.LVL0:
+  53 0018 CF93      		push r28
+  54 001a DF93      		push r29
+  55               	/* prologue: function */
+  56               	/* frame size = 0 */
+  57               	/* stack size = 2 */
+  58               	.L__stack_usage = 2
+  59               	.LM10:
+  60 001c DFB7      		in r29,__SREG__
+  61               	.LVL1:
+  62               	.LM11:
+  63               	/* #APP */
+  64               	 ;  22 "../Library/SPI.c" 1
+  65 001e F894      		cli
+  66               	 ;  0 "" 2
+  67               	.LM12:
+  68               	/* #NOAPP */
+  69 0020 9EB1      		in r25,46-32
+  70 0022 907F      		andi r25,lo8(-16)
+  71 0024 9EB9      		out 46-32,r25
+  72               	.LM13:
+  73 0026 C798      		cbi 56-32,7
+  74               	.LM14:
+  75 0028 8FB9      		out 47-32,r24
+  76               	.LM15:
+  77 002a CDB1      		in r28,45-32
+  78 002c C160      		ori r28,lo8(1)
+  79               	.LVL2:
+  80               	.LM16:
+  81 002e 9698      		cbi 50-32,6
+  82               	.LM17:
+  83 0030 61E0      		ldi r22,lo8(1)
+  84 0032 70E0      		ldi r23,hi8(1)
+  85 0034 80E0      		ldi r24,hlo8(1)
+  86 0036 90E0      		ldi r25,hhi8(1)
+  87 0038 00D0      		rcall delay
+  88               	.LVL3:
+  89 003a 80E1      		ldi r24,lo8(16)
+  90               	.LVL4:
+  91               	.L3:
+  92               	.LM18:
+  93 003c CDB9      		out 45-32,r28
+  94 003e 8150      		subi r24,lo8(-(-1))
+  95               	.LM19:
+  96 0040 01F4      		brne .L3
+  97               	.LM20:
+  98 0042 969A      		sbi 50-32,6
+  99               	.LM21:
+ 100 0044 DFBF      		out __SREG__,r29
+ 101               	.LM22:
+ 102 0046 8FB1      		in r24,47-32
+ 103               	/* epilogue start */
+ 104               	.LM23:
+ 105 0048 DF91      		pop r29
+ 106               	.LVL5:
+ 107 004a CF91      		pop r28
+ 108               	.LVL6:
+ 109 004c 0895      		ret
+ 110               	.LFE1:
+ 112               	.global	SPI_initializeSlave
+ 114               	SPI_initializeSlave:
+ 115               	.LFB2:
+ 116               	.LM24:
+ 117               	/* prologue: function */
+ 118               	/* frame size = 0 */
+ 119               	/* stack size = 0 */
+ 120               	.L__stack_usage = 0
+ 121               	.LM25:
+ 122 004e BE9A      		sbi 55-32,6
+ 123               	.LM26:
+ 124 0050 87B3      		in r24,55-32
+ 125 0052 8F75      		andi r24,lo8(95)
+ 126 0054 87BB      		out 55-32,r24
+ 127               	.LM27:
+ 128 0056 88E1      		ldi r24,lo8(24)
+ 129 0058 8DB9      		out 45-32,r24
+ 130               	.LM28:
+ 131 005a 85B7      		in r24,85-32
+ 132 005c 8D7F      		andi r24,lo8(-3)
+ 133 005e 85BF      		out 85-32,r24
+ 134               	.LM29:
+ 135 0060 85B7      		in r24,85-32
+ 136 0062 8160      		ori r24,lo8(1)
+ 137 0064 85BF      		out 85-32,r24
+ 138               	.LM30:
+ 139 0066 8BB7      		in r24,91-32
+ 140 0068 8064      		ori r24,lo8(64)
+ 141 006a 8BBF      		out 91-32,r24
+ 142               	.LM31:
+ 143 006c 00D0      		rcall UART_initialize
+ 144               	/* epilogue start */
+ 145               	.LM32:
+ 146 006e 0895      		ret
+ 147               	.LFE2:
+ 149               	.global	__vector_16
+ 151               	__vector_16:
+ 152               	.LFB3:
+ 153               	.LM33:
+ 154 0070 1F92      		push __zero_reg__
+ 155 0072 0F92      		push r0
+ 156 0074 0FB6      		in r0,__SREG__
+ 157 0076 0F92      		push r0
+ 158 0078 1124      		clr __zero_reg__
+ 159 007a 2F93      		push r18
+ 160 007c 3F93      		push r19
+ 161 007e 4F93      		push r20
+ 162 0080 5F93      		push r21
+ 163 0082 6F93      		push r22
+ 164 0084 7F93      		push r23
+ 165 0086 8F93      		push r24
+ 166 0088 9F93      		push r25
+ 167 008a AF93      		push r26
+ 168 008c BF93      		push r27
+ 169 008e EF93      		push r30
+ 170 0090 FF93      		push r31
+ 171               	/* prologue: Signal */
+ 172               	/* frame size = 0 */
+ 173               	/* stack size = 15 */
+ 174               	.L__stack_usage = 15
+ 175               	.LM34:
+ 176 0092 769A      		sbi 46-32,6
+ 177               	.LM35:
+ 178 0094 8FB1      		in r24,47-32
+ 179 0096 00D0      		rcall UART_sendByte
+ 180               	.LM36:
+ 181 0098 959A      		sbi 50-32,5
+ 182               	/* epilogue start */
+ 183               	.LM37:
+ 184 009a FF91      		pop r31
+ 185 009c EF91      		pop r30
+ 186 009e BF91      		pop r27
+ 187 00a0 AF91      		pop r26
+ 188 00a2 9F91      		pop r25
+ 189 00a4 8F91      		pop r24
+ 190 00a6 7F91      		pop r23
+ 191 00a8 6F91      		pop r22
+ 192 00aa 5F91      		pop r21
+ 193 00ac 4F91      		pop r20
+ 194 00ae 3F91      		pop r19
+ 195 00b0 2F91      		pop r18
+ 196 00b2 0F90      		pop r0
+ 197 00b4 0FBE      		out __SREG__,r0
+ 198 00b6 0F90      		pop r0
+ 199 00b8 1F90      		pop __zero_reg__
+ 200 00ba 1895      		reti
+ 201               	.LFE3:
+ 203               	.global	__vector_1
+ 205               	__vector_1:
+ 206               	.LFB4:
+ 207               	.LM38:
+ 208 00bc 1F92      		push __zero_reg__
+ 209 00be 0F92      		push r0
+ 210 00c0 0FB6      		in r0,__SREG__
+ 211 00c2 0F92      		push r0
+ 212 00c4 1124      		clr __zero_reg__
+ 213 00c6 8F93      		push r24
+ 214               	/* prologue: Signal */
+ 215               	/* frame size = 0 */
+ 216               	/* stack size = 4 */
+ 217               	.L__stack_usage = 4
+ 218               	.LM39:
+ 219 00c8 829B      		sbis 48-32,2
+ 220 00ca 00C0      		rjmp .L8
+ 221               	.LM40:
+ 222 00cc 6E98      		cbi 45-32,6
+ 223               	.LM41:
+ 224 00ce 87B3      		in r24,55-32
+ 225 00d0 8F71      		andi r24,lo8(31)
+ 226 00d2 87BB      		out 55-32,r24
+ 227 00d4 00C0      		rjmp .L7
+ 228               	.L8:
+ 229               	.LM42:
+ 230 00d6 6E9A      		sbi 45-32,6
+ 231               	.LM43:
+ 232 00d8 87B3      		in r24,55-32
+ 233 00da 8F75      		andi r24,lo8(95)
+ 234 00dc 87BB      		out 55-32,r24
+ 235               	.LM44:
+ 236 00de BE9A      		sbi 55-32,6
+ 237               	.L7:
+ 238               	/* epilogue start */
+ 239               	.LM45:
+ 240 00e0 8F91      		pop r24
+ 241 00e2 0F90      		pop r0
+ 242 00e4 0FBE      		out __SREG__,r0
+ 243 00e6 0F90      		pop r0
+ 244 00e8 1F90      		pop __zero_reg__
+ 245 00ea 1895      		reti
+ 246               	.LFE4:
+ 304               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 SPI.c
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:2      *ABS*:0000003f __SREG__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:3      *ABS*:0000003e __SP_H__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:4      *ABS*:0000003d __SP_L__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:5      *ABS*:00000034 __CCP__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:6      *ABS*:00000000 __tmp_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:7      *ABS*:00000001 __zero_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:18     .text:00000000 SPI_initializeMaster
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:49     .text:00000018 SPI_send
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:114    .text:0000004e SPI_initializeSlave
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:151    .text:00000070 __vector_16
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccUTyncb.s:205    .text:000000bc __vector_1
+
+UNDEFINED SYMBOLS
+delay
+UART_initialize
+UART_sendByte

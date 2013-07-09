@@ -1,0 +1,12 @@
+//#define SERVO_MAX 0x0139
+//#define SERVO_MIN 0x003E
+#define XANDER_MIN 0x00FE
+#define XANDER_MAX 0x0145
+
+#define SERVO_MIN XANDER_MIN
+#define SERVO_MAX XANDER_MAX
+void Servo_init();
+void Servo_inc();
+void Servo_dec();
+void Servo_reset();
+

@@ -1,0 +1,145 @@
+   1               		.file	"Print.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	printString
+  18               	printString:
+  19               	.LFB0:
+  20               	.LM1:
+  21               	.LVL0:
+  22 0000 CF93      		push r28
+  23 0002 DF93      		push r29
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	/* stack size = 2 */
+  27               	.L__stack_usage = 2
+  28               	.LM2:
+  29 0004 C82F      		mov r28,r24
+  30 0006 D92F      		mov r29,r25
+  31               	.LM3:
+  32 0008 00C0      		rjmp .L2
+  33               	.LVL1:
+  34               	.L3:
+  35               	.LM4:
+  36 000a 00D0      		rcall lcd_putch
+  37               	.L2:
+  38               	.LM5:
+  39 000c 8991      		ld r24,Y+
+  40 000e 8823      		tst r24
+  41 0010 01F4      		brne .L3
+  42               	/* epilogue start */
+  43               	.LM6:
+  44 0012 DF91      		pop r29
+  45 0014 CF91      		pop r28
+  46 0016 0895      		ret
+  47               	.LFE0:
+  49               	.global	printNibble
+  51               	printNibble:
+  52               	.LFB1:
+  53               	.LM7:
+  54               	.LVL2:
+  55               	/* prologue: function */
+  56               	/* frame size = 0 */
+  57               	/* stack size = 0 */
+  58               	.L__stack_usage = 0
+  59               	.LM8:
+  60 0018 8F70      		andi r24,lo8(15)
+  61               	.LVL3:
+  62               	.LM9:
+  63 001a 8A30      		cpi r24,lo8(10)
+  64 001c 00F4      		brsh .L5
+  65               	.LM10:
+  66 001e 8063      		ori r24,lo8(48)
+  67               	.LVL4:
+  68 0020 00C0      		rjmp .L7
+  69               	.LVL5:
+  70               	.L5:
+  71               	.LM11:
+  72 0022 8950      		subi r24,lo8(-(-9))
+  73               	.LVL6:
+  74               	.LM12:
+  75 0024 8064      		ori r24,lo8(64)
+  76               	.LVL7:
+  77               	.L7:
+  78 0026 00D0      		rcall lcd_putch
+  79 0028 0895      		ret
+  80               	.LFE1:
+  82               		.data
+  83               	.LC0:
+  84 0000 3078 00   		.string	"0x"
+  85               		.text
+  86               	.global	printInt
+  88               	printInt:
+  89               	.LFB2:
+  90               	.LM13:
+  91               	.LVL8:
+  92 002a FF92      		push r15
+  93 002c 0F93      		push r16
+  94 002e 1F93      		push r17
+  95 0030 CF93      		push r28
+  96 0032 DF93      		push r29
+  97               	/* prologue: function */
+  98               	/* frame size = 0 */
+  99               	/* stack size = 5 */
+ 100               	.L__stack_usage = 5
+ 101 0034 EC01      		movw r28,r24
+ 102 0036 F62E      		mov r15,r22
+ 103               	.LM14:
+ 104 0038 FA94      		dec r15
+ 105               	.LVL9:
+ 106               	.LM15:
+ 107 003a 80E0      		ldi r24,lo8(.LC0)
+ 108 003c 90E0      		ldi r25,hi8(.LC0)
+ 109               	.LVL10:
+ 110 003e 00D0      		rcall printString
+ 111               	.L9:
+ 112               	.LM16:
+ 113 0040 8E01      		movw r16,r28
+ 114 0042 0F0D      		add r16,r15
+ 115 0044 111D      		adc r17,__zero_reg__
+ 116 0046 F801      		movw r30,r16
+ 117 0048 8081      		ld r24,Z
+ 118 004a 8295      		swap r24
+ 119 004c 8F70      		andi r24,lo8(15)
+ 120 004e 00D0      		rcall printNibble
+ 121               	.LM17:
+ 122 0050 F801      		movw r30,r16
+ 123 0052 8081      		ld r24,Z
+ 124 0054 00D0      		rcall printNibble
+ 125               	.LM18:
+ 126 0056 FA94      		dec r15
+ 127               	.LVL11:
+ 128 0058 FF2D      		mov r31,r15
+ 129 005a FF3F      		cpi r31,lo8(-1)
+ 130 005c 01F4      		brne .L9
+ 131               	/* epilogue start */
+ 132               	.LM19:
+ 133 005e DF91      		pop r29
+ 134 0060 CF91      		pop r28
+ 135               	.LVL12:
+ 136 0062 1F91      		pop r17
+ 137 0064 0F91      		pop r16
+ 138 0066 FF90      		pop r15
+ 139               	.LVL13:
+ 140 0068 0895      		ret
+ 141               	.LFE2:
+ 183               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Print.c
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccaQcxAj.s:2      *ABS*:0000003f __SREG__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccaQcxAj.s:3      *ABS*:0000003e __SP_H__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccaQcxAj.s:4      *ABS*:0000003d __SP_L__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccaQcxAj.s:5      *ABS*:00000034 __CCP__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccaQcxAj.s:6      *ABS*:00000000 __tmp_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccaQcxAj.s:7      *ABS*:00000001 __zero_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccaQcxAj.s:18     .text:00000000 printString
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccaQcxAj.s:51     .text:00000018 printNibble
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccaQcxAj.s:88     .text:0000002a printInt
+
+UNDEFINED SYMBOLS
+lcd_putch
+__do_copy_data

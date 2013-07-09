@@ -1,0 +1,198 @@
+   1               		.file	"Timer0.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	Timer0_stop
+  18               	Timer0_stop:
+  19               	.LFB0:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	/* stack size = 0 */
+  24               	.L__stack_usage = 0
+  25               	.LM2:
+  26 0000 83B7      		in r24,83-32
+  27 0002 8770      		andi r24,lo8(7)
+  28 0004 8093 0000 		sts prescale,r24
+  29               	.LM3:
+  30 0008 83B7      		in r24,83-32
+  31 000a 887F      		andi r24,lo8(-8)
+  32 000c 83BF      		out 83-32,r24
+  33               	/* epilogue start */
+  34               	.LM4:
+  35 000e 0895      		ret
+  36               	.LFE0:
+  38               	.global	Timer0_start
+  40               	Timer0_start:
+  41               	.LFB1:
+  42               	.LM5:
+  43               	/* prologue: function */
+  44               	/* frame size = 0 */
+  45               	/* stack size = 0 */
+  46               	.L__stack_usage = 0
+  47               	.LM6:
+  48 0010 93B7      		in r25,83-32
+  49 0012 8091 0000 		lds r24,prescale
+  50 0016 892B      		or r24,r25
+  51 0018 83BF      		out 83-32,r24
+  52               	/* epilogue start */
+  53               	.LM7:
+  54 001a 0895      		ret
+  55               	.LFE1:
+  57               	.global	Timer0_reset
+  59               	Timer0_reset:
+  60               	.LFB2:
+  61               	.LM8:
+  62               	/* prologue: function */
+  63               	/* frame size = 0 */
+  64               	/* stack size = 0 */
+  65               	.L__stack_usage = 0
+  66               	.LM9:
+  67 001c 12BE      		out 82-32,__zero_reg__
+  68               	/* epilogue start */
+  69               	.LM10:
+  70 001e 0895      		ret
+  71               	.LFE2:
+  73               	.global	Timer0_initialize
+  75               	Timer0_initialize:
+  76               	.LFB3:
+  77               	.LM11:
+  78               	/* prologue: function */
+  79               	/* frame size = 0 */
+  80               	/* stack size = 0 */
+  81               	.L__stack_usage = 0
+  82               	.LM12:
+  83 0020 82E0      		ldi r24,lo8(2)
+  84 0022 80BF      		out 80-32,r24
+  85               	.LM13:
+  86 0024 85EB      		ldi r24,lo8(-75)
+  87 0026 86BF      		out 86-32,r24
+  88               	.LM14:
+  89 0028 81E0      		ldi r24,lo8(1)
+  90 002a 83BF      		out 83-32,r24
+  91               	.LM15:
+  92 002c 89B7      		in r24,89-32
+  93 002e 8160      		ori r24,lo8(1)
+  94 0030 89BF      		out 89-32,r24
+  95               	/* epilogue start */
+  96               	.LM16:
+  97 0032 0895      		ret
+  98               	.LFE3:
+ 100               	.global	__vector_13
+ 102               	__vector_13:
+ 103               	.LFB4:
+ 104               	.LM17:
+ 105 0034 1F92      		push __zero_reg__
+ 106 0036 0F92      		push r0
+ 107 0038 0FB6      		in r0,__SREG__
+ 108 003a 0F92      		push r0
+ 109 003c 1124      		clr __zero_reg__
+ 110 003e 2F93      		push r18
+ 111 0040 8F93      		push r24
+ 112 0042 9F93      		push r25
+ 113 0044 AF93      		push r26
+ 114 0046 BF93      		push r27
+ 115               	/* prologue: Signal */
+ 116               	/* frame size = 0 */
+ 117               	/* stack size = 8 */
+ 118               	.L__stack_usage = 8
+ 119               	.LM18:
+ 120 0048 8091 0000 		lds r24,interruptCounter
+ 121 004c 9091 0000 		lds r25,interruptCounter+1
+ 122 0050 0196      		adiw r24,1
+ 123 0052 9093 0000 		sts interruptCounter+1,r25
+ 124 0056 8093 0000 		sts interruptCounter,r24
+ 125               	.LM19:
+ 126 005a 8091 0000 		lds r24,interruptCounter
+ 127 005e 9091 0000 		lds r25,interruptCounter+1
+ 128 0062 8D3D      		cpi r24,221
+ 129 0064 9105      		cpc r25,__zero_reg__
+ 130 0066 00F0      		brlo .L6
+ 131               	.LM20:
+ 132 0068 1092 0000 		sts interruptCounter+1,__zero_reg__
+ 133 006c 1092 0000 		sts interruptCounter,__zero_reg__
+ 134               	.LM21:
+ 135 0070 8091 0000 		lds r24,currentMilliSeconds
+ 136 0074 9091 0000 		lds r25,currentMilliSeconds+1
+ 137 0078 0A96      		adiw r24,10
+ 138 007a 9093 0000 		sts currentMilliSeconds+1,r25
+ 139 007e 8093 0000 		sts currentMilliSeconds,r24
+ 140               	.L6:
+ 141               	.LM22:
+ 142 0082 8091 0000 		lds r24,currentMilliSeconds
+ 143 0086 9091 0000 		lds r25,currentMilliSeconds+1
+ 144 008a 23E0      		ldi r18,hi8(1000)
+ 145 008c 883E      		cpi r24,lo8(1000)
+ 146 008e 9207      		cpc r25,r18
+ 147 0090 00F0      		brlo .L5
+ 148               	.LM23:
+ 149 0092 1092 0000 		sts currentMilliSeconds+1,__zero_reg__
+ 150 0096 1092 0000 		sts currentMilliSeconds,__zero_reg__
+ 151               	.LM24:
+ 152 009a 8091 0000 		lds r24,currentSeconds
+ 153 009e 9091 0000 		lds r25,currentSeconds+1
+ 154 00a2 A091 0000 		lds r26,currentSeconds+2
+ 155 00a6 B091 0000 		lds r27,currentSeconds+3
+ 156 00aa 0196      		adiw r24,1
+ 157 00ac A11D      		adc r26,__zero_reg__
+ 158 00ae B11D      		adc r27,__zero_reg__
+ 159 00b0 8093 0000 		sts currentSeconds,r24
+ 160 00b4 9093 0000 		sts currentSeconds+1,r25
+ 161 00b8 A093 0000 		sts currentSeconds+2,r26
+ 162 00bc B093 0000 		sts currentSeconds+3,r27
+ 163               	.L5:
+ 164               	/* epilogue start */
+ 165               	.LM25:
+ 166 00c0 BF91      		pop r27
+ 167 00c2 AF91      		pop r26
+ 168 00c4 9F91      		pop r25
+ 169 00c6 8F91      		pop r24
+ 170 00c8 2F91      		pop r18
+ 171 00ca 0F90      		pop r0
+ 172 00cc 0FBE      		out __SREG__,r0
+ 173 00ce 0F90      		pop r0
+ 174 00d0 1F90      		pop __zero_reg__
+ 175 00d2 1895      		reti
+ 176               	.LFE4:
+ 178               	.global	prescale
+ 179               	.global	prescale
+ 180               		.section .bss
+ 183               	prescale:
+ 184 0000 00        		.skip 1,0
+ 185               	.global	currentMilliSeconds
+ 186               	.global	currentMilliSeconds
+ 189               	currentMilliSeconds:
+ 190 0001 0000      		.skip 2,0
+ 191               	.global	currentSeconds
+ 192               	.global	currentSeconds
+ 195               	currentSeconds:
+ 196 0003 0000 0000 		.skip 4,0
+ 197               	.global	interruptCounter
+ 198               	.global	interruptCounter
+ 201               	interruptCounter:
+ 202 0007 0000      		.skip 2,0
+ 259               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Timer0.c
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:2      *ABS*:0000003f __SREG__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:3      *ABS*:0000003e __SP_H__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:4      *ABS*:0000003d __SP_L__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:5      *ABS*:00000034 __CCP__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:6      *ABS*:00000000 __tmp_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:7      *ABS*:00000001 __zero_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:18     .text:00000000 Timer0_stop
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:183    .bss:00000000 prescale
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:40     .text:00000010 Timer0_start
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:59     .text:0000001c Timer0_reset
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:75     .text:00000020 Timer0_initialize
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:102    .text:00000034 __vector_13
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:201    .bss:00000007 interruptCounter
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:189    .bss:00000001 currentMilliSeconds
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccwQF3ke.s:195    .bss:00000003 currentSeconds
+
+UNDEFINED SYMBOLS
+__do_clear_bss

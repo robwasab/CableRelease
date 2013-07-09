@@ -1,0 +1,755 @@
+Archive member included because of file (symbol)
+
+/usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_mulhi3.o)
+                              main.o (__mulhi3)
+/usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_exit.o)
+                              /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o (exit)
+/usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_copy_data.o)
+                              main.o (__do_copy_data)
+/usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_clear_bss.o)
+                              main.o (__do_clear_bss)
+/usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_word_attiny4313.o)
+                              main.o (__eerd_word_tn4313)
+/usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_word_attiny4313.o)
+                              main.o (__eewr_word_tn4313)
+/usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_block_attiny4313.o)
+                              /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_word_attiny4313.o) (__eerd_blraw_tn4313)
+/usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_byte_attiny4313.o)
+                              /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_word_attiny4313.o) (__eewr_byte_tn4313)
+
+Allocating common symbols
+Common symbol       size              file
+
+timer               0x2               main.o
+buffer              0x1               main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+LOAD main.o
+LOAD ../Library/UART.o
+LOAD ../Library/Delay.o
+LOAD ../Library/Timer1.o
+LOAD ../Library/Timer0.o
+LOAD ../Library/SPI.o
+LOAD ../Library/LCD.o
+LOAD ../Library/Print.o
+LOAD ../Library/Servo.o
+LOAD /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libm.a
+LOAD /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a
+LOAD /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a
+LOAD /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0xb7a
+ *(.vectors)
+ .vectors       0x00000000       0x2a /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x0000002a       0x73 main.o
+                0x0000002a                menu
+                0x0000009e                . = ALIGN (0x2)
+ *fill*         0x0000009d        0x1 00
+                0x0000009e                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000009e        0x0 linker stubs
+ *(.trampolines*)
+                0x0000009e                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x0000009e                __ctors_start = .
+ *(.ctors)
+                0x0000009e                __ctors_end = .
+                0x0000009e                __dtors_start = .
+ *(.dtors)
+                0x0000009e                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x0000009e        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+                0x0000009e                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000009e        0xc /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x000000aa       0x16 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_copy_data.o)
+                0x000000aa                __do_copy_data
+ .init4         0x000000c0       0x10 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_clear_bss.o)
+                0x000000c0                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x000000d0        0x4 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+ *(.init9)
+ *(.text)
+ .text          0x000000d4        0x2 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+                0x000000d4                __vector_18
+                0x000000d4                __bad_interrupt
+                0x000000d4                __vector_6
+                0x000000d4                __vector_3
+                0x000000d4                __vector_11
+                0x000000d4                __vector_17
+                0x000000d4                __vector_19
+                0x000000d4                __vector_7
+                0x000000d4                __vector_5
+                0x000000d4                __vector_4
+                0x000000d4                __vector_9
+                0x000000d4                __vector_2
+                0x000000d4                __vector_15
+                0x000000d4                __vector_8
+                0x000000d4                __vector_14
+                0x000000d4                __vector_10
+                0x000000d4                __vector_12
+ .text          0x000000d6      0x472 main.o
+                0x000000d6                toggleLed
+                0x00000106                test
+                0x0000018a                reset
+                0x000001c4                start
+                0x000002ac                pollUpDownButtons
+                0x0000032a                setHoldTime
+                0x00000344                setTimer
+                0x0000035e                fillBuffer
+                0x0000038c                displayBuffer
+                0x000003fe                __vector_20
+                0x0000048e                main
+ .text          0x00000548       0x7a ../Library/UART.o
+                0x00000548                UART_sendChar
+                0x0000055e                UART_sendString
+                0x0000058e                UART_sendByte
+                0x000005a4                UART_getByte
+                0x000005ac                UART_initialize
+ .text          0x000005c2       0x48 ../Library/Delay.o
+                0x000005c2                delay_ms
+                0x000005e0                delay
+ .text          0x0000060a       0x64 ../Library/Timer1.o
+                0x0000060a                Timer1_initializeFastPwm
+                0x0000063e                Timer1_stop
+                0x0000064e                Timer1_start
+                0x0000065a                Timer1_getValue
+                0x00000662                Timer1_setOCR1A
+                0x00000668                Timer1_setOCR1B
+ .text          0x0000066e       0xd4 ../Library/Timer0.o
+                0x0000066e                Timer0_stop
+                0x0000067e                Timer0_start
+                0x0000068a                Timer0_reset
+                0x0000068e                Timer0_initialize
+                0x000006a2                __vector_13
+ .text          0x00000742       0xec ../Library/SPI.o
+                0x00000742                SPI_initializeMaster
+                0x0000075a                SPI_send
+                0x00000790                SPI_initializeSlave
+                0x000007b2                __vector_16
+                0x000007fe                __vector_1
+ .text          0x0000082e      0x1fe ../Library/LCD.o
+                0x0000082e                lcd_write
+                0x000008fe                lcd_clear
+                0x0000091e                lcd_puts
+                0x00000944                lcd_putch
+                0x00000956                lcd_goto
+                0x00000972                lcd_init
+ .text          0x00000a2c       0x6a ../Library/Print.o
+                0x00000a2c                printString
+                0x00000a44                printNibble
+                0x00000a56                printInt
+ .text          0x00000a96       0x74 ../Library/Servo.o
+                0x00000a96                Servo_init
+                0x00000ab4                Servo_reset
+                0x00000abe                Servo_inc
+                0x00000ad6                Servo_dec
+                0x00000aec                Servo_setPos
+ .text          0x00000b0a        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_mulhi3.o)
+ .text          0x00000b0a        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_exit.o)
+ .text          0x00000b0a        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_copy_data.o)
+ .text          0x00000b0a        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_clear_bss.o)
+ .text          0x00000b0a        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_word_attiny4313.o)
+ .text          0x00000b0a        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_word_attiny4313.o)
+ .text          0x00000b0a        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_block_attiny4313.o)
+ .text          0x00000b0a        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_byte_attiny4313.o)
+                0x00000b0a                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00000b0a       0x24 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_mulhi3.o)
+                0x00000b0a                __mulhi3
+ .text.libgcc   0x00000b2e        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_exit.o)
+ .text.libgcc   0x00000b2e        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000b2e        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x00000b2e        0x8 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_word_attiny4313.o)
+                0x00000b2e                __eerd_word_tn4313
+ .text.avr-libc
+                0x00000b36        0x6 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_word_attiny4313.o)
+                0x00000b36                __eewr_word_tn4313
+ .text.avr-libc
+                0x00000b3c       0x1e /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_block_attiny4313.o)
+                0x00000b3c                __eerd_block_tn4313
+                0x00000b40                __eerd_blraw_tn4313
+ .text.avr-libc
+                0x00000b5a       0x1c /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_byte_attiny4313.o)
+                0x00000b5a                __eewr_byte_tn4313
+                0x00000b5c                __eewr_r18_tn4313
+                0x00000b76                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000b76        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_exit.o)
+                0x00000b76                exit
+                0x00000b76                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000b76        0x4 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_exit.o)
+ *(.fini0)
+                0x00000b7a                _etext = .
+
+.data           0x00800060       0x58 load address 0x00000b7a
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+ .data          0x00800060       0x50 main.o
+                0x008000ad                LED
+                0x008000ae                holdTime
+ .data          0x008000b0        0x0 ../Library/UART.o
+ .data          0x008000b0        0x0 ../Library/Delay.o
+ .data          0x008000b0        0x0 ../Library/Timer1.o
+ .data          0x008000b0        0x0 ../Library/Timer0.o
+ .data          0x008000b0        0x0 ../Library/SPI.o
+ .data          0x008000b0        0x4 ../Library/LCD.o
+                0x008000b0                PORTBbits
+                0x008000b2                PORTDbits
+ .data          0x008000b4        0x3 ../Library/Print.o
+ .data          0x008000b7        0x0 ../Library/Servo.o
+ .data          0x008000b7        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_mulhi3.o)
+ .data          0x008000b7        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_exit.o)
+ .data          0x008000b7        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_copy_data.o)
+ .data          0x008000b7        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_clear_bss.o)
+ .data          0x008000b7        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_word_attiny4313.o)
+ .data          0x008000b7        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_word_attiny4313.o)
+ .data          0x008000b7        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_block_attiny4313.o)
+ .data          0x008000b7        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_byte_attiny4313.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x008000b8                . = ALIGN (0x2)
+ *fill*         0x008000b7        0x1 00
+                0x008000b8                _edata = .
+                0x008000b8                PROVIDE (__data_end, .)
+
+.bss            0x008000b8        0xf
+                0x008000b8                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x008000b8        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+ .bss           0x008000b8        0x2 main.o
+                0x008000b8                cursor
+                0x008000b9                select
+ .bss           0x008000ba        0x0 ../Library/UART.o
+ .bss           0x008000ba        0x0 ../Library/Delay.o
+ .bss           0x008000ba        0x1 ../Library/Timer1.o
+                0x008000ba                savePrescale
+ .bss           0x008000bb        0x9 ../Library/Timer0.o
+                0x008000bb                prescale
+                0x008000bc                currentMilliSeconds
+                0x008000be                currentSeconds
+                0x008000c2                interruptCounter
+ .bss           0x008000c4        0x0 ../Library/SPI.o
+ .bss           0x008000c4        0x0 ../Library/LCD.o
+ .bss           0x008000c4        0x0 ../Library/Print.o
+ .bss           0x008000c4        0x0 ../Library/Servo.o
+ .bss           0x008000c4        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_mulhi3.o)
+ .bss           0x008000c4        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_exit.o)
+ .bss           0x008000c4        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_copy_data.o)
+ .bss           0x008000c4        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_clear_bss.o)
+ .bss           0x008000c4        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_word_attiny4313.o)
+ .bss           0x008000c4        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_word_attiny4313.o)
+ .bss           0x008000c4        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_block_attiny4313.o)
+ .bss           0x008000c4        0x0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_byte_attiny4313.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x008000c4        0x3 main.o
+                0x008000c4                timer
+                0x008000c6                buffer
+                0x008000c7                PROVIDE (__bss_end, .)
+                0x00000b7a                __data_load_start = LOADADDR (.data)
+                0x00000bd2                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008000c7        0x0
+                0x008000c7                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008000c7                PROVIDE (__noinit_end, .)
+                0x008000c7                _end = .
+                0x008000c7                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab           0x00000000      0x954
+ *(.stab)
+ .stab          0x00000000      0x6cc /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+ .stab          0x000006cc       0x60 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_word_attiny4313.o)
+                                 0x6c (size before relaxing)
+ .stab          0x0000072c       0x54 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_word_attiny4313.o)
+                                 0x60 (size before relaxing)
+ .stab          0x00000780       0xf0 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_block_attiny4313.o)
+                                 0xfc (size before relaxing)
+ .stab          0x00000870       0xe4 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_byte_attiny4313.o)
+                                 0xf0 (size before relaxing)
+
+.stabstr        0x00000000      0x1f2
+ *(.stabstr)
+ .stabstr       0x00000000      0x1f2 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x120
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 main.o
+ .debug_aranges
+                0x00000020       0x20 ../Library/UART.o
+ .debug_aranges
+                0x00000040       0x20 ../Library/Delay.o
+ .debug_aranges
+                0x00000060       0x20 ../Library/Timer1.o
+ .debug_aranges
+                0x00000080       0x20 ../Library/Timer0.o
+ .debug_aranges
+                0x000000a0       0x20 ../Library/SPI.o
+ .debug_aranges
+                0x000000c0       0x20 ../Library/LCD.o
+ .debug_aranges
+                0x000000e0       0x20 ../Library/Print.o
+ .debug_aranges
+                0x00000100       0x20 ../Library/Servo.o
+
+.debug_pubnames
+                0x00000000      0x46a
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0xf3 main.o
+ .debug_pubnames
+                0x000000f3       0x6f ../Library/UART.o
+ .debug_pubnames
+                0x00000162       0x29 ../Library/Delay.o
+ .debug_pubnames
+                0x0000018b       0x9d ../Library/Timer1.o
+ .debug_pubnames
+                0x00000228       0xb7 ../Library/Timer0.o
+ .debug_pubnames
+                0x000002df       0x6f ../Library/SPI.o
+ .debug_pubnames
+                0x0000034e       0x7f ../Library/LCD.o
+ .debug_pubnames
+                0x000003cd       0x3f ../Library/Print.o
+ .debug_pubnames
+                0x0000040c       0x5e ../Library/Servo.o
+
+.debug_info     0x00000000     0x12f5
+ *(.debug_info)
+ .debug_info    0x00000000      0x630 main.o
+ .debug_info    0x00000630      0x12b ../Library/UART.o
+ .debug_info    0x0000075b      0x11d ../Library/Delay.o
+ .debug_info    0x00000878      0x15c ../Library/Timer1.o
+ .debug_info    0x000009d4      0x173 ../Library/Timer0.o
+ .debug_info    0x00000b47      0x11e ../Library/SPI.o
+ .debug_info    0x00000c65      0x4a7 ../Library/LCD.o
+ .debug_info    0x0000110c      0x100 ../Library/Print.o
+ .debug_info    0x0000120c       0xe9 ../Library/Servo.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x7d6
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x24b main.o
+ .debug_abbrev  0x0000024b       0xae ../Library/UART.o
+ .debug_abbrev  0x000002f9       0xb8 ../Library/Delay.o
+ .debug_abbrev  0x000003b1       0xc1 ../Library/Timer1.o
+ .debug_abbrev  0x00000472       0x75 ../Library/Timer0.o
+ .debug_abbrev  0x000004e7       0x9f ../Library/SPI.o
+ .debug_abbrev  0x00000586      0x16d ../Library/LCD.o
+ .debug_abbrev  0x000006f3       0x75 ../Library/Print.o
+ .debug_abbrev  0x00000768       0x6e ../Library/Servo.o
+
+.debug_line     0x00000000     0x138d
+ *(.debug_line)
+ .debug_line    0x00000000      0x5cb main.o
+ .debug_line    0x000005cb      0x189 ../Library/UART.o
+ .debug_line    0x00000754      0x12e ../Library/Delay.o
+ .debug_line    0x00000882      0x173 ../Library/Timer1.o
+ .debug_line    0x000009f5      0x17f ../Library/Timer0.o
+ .debug_line    0x00000b74      0x210 ../Library/SPI.o
+ .debug_line    0x00000d84      0x36d ../Library/LCD.o
+ .debug_line    0x000010f1      0x142 ../Library/Print.o
+ .debug_line    0x00001233      0x15a ../Library/Servo.o
+
+.debug_frame    0x00000000      0x390
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xc0 main.o
+ .debug_frame   0x000000c0       0x60 ../Library/UART.o
+ .debug_frame   0x00000120       0x30 ../Library/Delay.o
+ .debug_frame   0x00000150       0x70 ../Library/Timer1.o
+ .debug_frame   0x000001c0       0x60 ../Library/Timer0.o
+ .debug_frame   0x00000220       0x60 ../Library/SPI.o
+ .debug_frame   0x00000280       0x70 ../Library/LCD.o
+ .debug_frame   0x000002f0       0x40 ../Library/Print.o
+ .debug_frame   0x00000330       0x60 ../Library/Servo.o
+
+.debug_str      0x00000000      0x4f3
+ *(.debug_str)
+ .debug_str     0x00000000      0x1bf main.o
+                                0x204 (size before relaxing)
+ .debug_str     0x000001bf       0x62 ../Library/UART.o
+                                0x122 (size before relaxing)
+ .debug_str     0x00000221       0x38 ../Library/Delay.o
+                                0x105 (size before relaxing)
+ .debug_str     0x00000259       0xa1 ../Library/Timer1.o
+                                0x165 (size before relaxing)
+ .debug_str     0x000002fa       0x72 ../Library/Timer0.o
+                                0x162 (size before relaxing)
+ .debug_str     0x0000036c       0x5f ../Library/SPI.o
+                                0x11f (size before relaxing)
+ .debug_str     0x000003cb       0xa3 ../Library/LCD.o
+                                0x1c4 (size before relaxing)
+ .debug_str     0x0000046e       0x3a ../Library/Print.o
+                                 0xfa (size before relaxing)
+ .debug_str     0x000004a8       0x4b ../Library/Servo.o
+                                0x10f (size before relaxing)
+
+.debug_loc      0x00000000      0x48a
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x1cc main.o
+ .debug_loc     0x000001cc       0x62 ../Library/UART.o
+ .debug_loc     0x0000022e       0x74 ../Library/Delay.o
+ .debug_loc     0x000002a2       0x29 ../Library/Timer1.o
+ .debug_loc     0x000002cb       0x65 ../Library/SPI.o
+ .debug_loc     0x00000330       0x88 ../Library/LCD.o
+ .debug_loc     0x000003b8       0xaa ../Library/Print.o
+ .debug_loc     0x00000462       0x28 ../Library/Servo.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(main.elf elf32-avr)
+LOAD linker stubs
+
+.debug_pubtypes
+                0x00000000      0x1a6
+ .debug_pubtypes
+                0x00000000       0x4e main.o
+ .debug_pubtypes
+                0x0000004e       0x1e ../Library/UART.o
+ .debug_pubtypes
+                0x0000006c       0x2b ../Library/Delay.o
+ .debug_pubtypes
+                0x00000097       0x2b ../Library/Timer1.o
+ .debug_pubtypes
+                0x000000c2       0x38 ../Library/Timer0.o
+ .debug_pubtypes
+                0x000000fa       0x1e ../Library/SPI.o
+ .debug_pubtypes
+                0x00000118       0x45 ../Library/LCD.o
+ .debug_pubtypes
+                0x0000015d       0x1e ../Library/Print.o
+ .debug_pubtypes
+                0x0000017b       0x2b ../Library/Servo.o
+
+Cross Reference Table
+
+Symbol                                            File
+LED                                               main.o
+PORTBbits                                         ../Library/LCD.o
+PORTDbits                                         ../Library/LCD.o
+SPI_initializeMaster                              ../Library/SPI.o
+SPI_initializeSlave                               ../Library/SPI.o
+SPI_send                                          ../Library/SPI.o
+Servo_dec                                         ../Library/Servo.o
+Servo_inc                                         ../Library/Servo.o
+Servo_init                                        ../Library/Servo.o
+                                                  main.o
+Servo_reset                                       ../Library/Servo.o
+Servo_setPos                                      ../Library/Servo.o
+Timer0_initialize                                 ../Library/Timer0.o
+                                                  main.o
+Timer0_reset                                      ../Library/Timer0.o
+Timer0_start                                      ../Library/Timer0.o
+Timer0_stop                                       ../Library/Timer0.o
+Timer1_getValue                                   ../Library/Timer1.o
+Timer1_initializeFastPwm                          ../Library/Timer1.o
+                                                  ../Library/Servo.o
+Timer1_setOCR1A                                   ../Library/Timer1.o
+Timer1_setOCR1B                                   ../Library/Timer1.o
+Timer1_start                                      ../Library/Timer1.o
+Timer1_stop                                       ../Library/Timer1.o
+UART_getByte                                      ../Library/UART.o
+UART_initialize                                   ../Library/UART.o
+                                                  ../Library/SPI.o
+UART_sendByte                                     ../Library/UART.o
+                                                  ../Library/SPI.o
+UART_sendChar                                     ../Library/UART.o
+UART_sendString                                   ../Library/UART.o
+__bad_interrupt                                   /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__bss_end                                         /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_clear_bss.o)
+__bss_start                                       /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_clear_bss.o)
+__data_end                                        /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_copy_data.o)
+__data_load_start                                 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_copy_data.o)
+__data_start                                      /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_copy_data.o)
+__do_clear_bss                                    /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_clear_bss.o)
+                                                  ../Library/Timer0.o
+                                                  ../Library/Timer1.o
+                                                  main.o
+__do_copy_data                                    /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_copy_data.o)
+                                                  ../Library/Print.o
+                                                  ../Library/LCD.o
+                                                  main.o
+__eerd_block_tn4313                               /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_block_attiny4313.o)
+__eerd_blraw_tn4313                               /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_block_attiny4313.o)
+                                                  /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_word_attiny4313.o)
+__eerd_word_tn4313                                /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eerd_word_attiny4313.o)
+                                                  main.o
+__eewr_byte_tn4313                                /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_byte_attiny4313.o)
+                                                  /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_word_attiny4313.o)
+__eewr_r18_tn4313                                 /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_byte_attiny4313.o)
+                                                  /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_word_attiny4313.o)
+__eewr_word_tn4313                                /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/libc.a(eewr_word_attiny4313.o)
+                                                  main.o
+__heap_end                                        /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__init                                            /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__mulhi3                                          /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_mulhi3.o)
+                                                  main.o
+__stack                                           /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_1                                        ../Library/SPI.o
+                                                  /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_10                                       /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_11                                       /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_12                                       /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_13                                       ../Library/Timer0.o
+                                                  /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_14                                       /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_15                                       /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_16                                       ../Library/SPI.o
+                                                  /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_17                                       /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_18                                       /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_19                                       /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_2                                        /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_20                                       main.o
+                                                  /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_3                                        /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_4                                        /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_5                                        /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_6                                        /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_7                                        /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_8                                        /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_9                                        /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vector_default                                  /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+__vectors                                         /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+_exit                                             /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_exit.o)
+buffer                                            main.o
+currentMilliSeconds                               ../Library/Timer0.o
+                                                  ../Library/Delay.o
+currentSeconds                                    ../Library/Timer0.o
+                                                  main.o
+cursor                                            main.o
+delay                                             ../Library/Delay.o
+                                                  ../Library/SPI.o
+                                                  ../Library/UART.o
+delay_ms                                          ../Library/Delay.o
+displayBuffer                                     main.o
+exit                                              /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/avr25/libgcc.a(_exit.o)
+                                                  /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+fillBuffer                                        main.o
+holdTime                                          main.o
+interruptCounter                                  ../Library/Timer0.o
+lcd_clear                                         ../Library/LCD.o
+                                                  main.o
+lcd_goto                                          ../Library/LCD.o
+                                                  main.o
+lcd_init                                          ../Library/LCD.o
+                                                  main.o
+lcd_putch                                         ../Library/LCD.o
+                                                  ../Library/Print.o
+lcd_puts                                          ../Library/LCD.o
+                                                  main.o
+lcd_write                                         ../Library/LCD.o
+main                                              main.o
+                                                  /usr/local/CrossPack-AVR/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr25/crttn4313.o
+menu                                              main.o
+pollUpDownButtons                                 main.o
+prescale                                          ../Library/Timer0.o
+printInt                                          ../Library/Print.o
+                                                  main.o
+printNibble                                       ../Library/Print.o
+printString                                       ../Library/Print.o
+reset                                             main.o
+savePrescale                                      ../Library/Timer1.o
+select                                            main.o
+setHoldTime                                       main.o
+setTimer                                          main.o
+start                                             main.o
+test                                              main.o
+timer                                             main.o
+toggleLed                                         main.o

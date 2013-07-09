@@ -1,0 +1,155 @@
+   1               		.file	"Servo.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	Servo_init
+  18               	Servo_init:
+  19               	.LFB0:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	/* stack size = 0 */
+  24               	.L__stack_usage = 0
+  25               	.LM2:
+  26 0000 80E0      		ldi r24,lo8(0)
+  27 0002 00D0      		rcall Timer1_initializeFastPwm
+  28               	.LM3:
+  29 0004 84EC      		ldi r24,lo8(2500)
+  30 0006 99E0      		ldi r25,hi8(2500)
+  31 0008 95BD      		out 68+1-32,r25
+  32 000a 84BD      		out 68-32,r24
+  33               	.LM4:
+  34 000c 8EB5      		in r24,78-32
+  35 000e 8260      		ori r24,lo8(2)
+  36 0010 8EBD      		out 78-32,r24
+  37               	.LM5:
+  38 0012 8EEF      		ldi r24,lo8(254)
+  39 0014 90E0      		ldi r25,hi8(254)
+  40 0016 9BBD      		out 74+1-32,r25
+  41 0018 8ABD      		out 74-32,r24
+  42               	.LM6:
+  43 001a BB9A      		sbi 55-32,3
+  44               	/* epilogue start */
+  45               	.LM7:
+  46 001c 0895      		ret
+  47               	.LFE0:
+  49               	.global	Servo_reset
+  51               	Servo_reset:
+  52               	.LFB1:
+  53               	.LM8:
+  54               	/* prologue: function */
+  55               	/* frame size = 0 */
+  56               	/* stack size = 0 */
+  57               	.L__stack_usage = 0
+  58               	.LM9:
+  59 001e 85E4      		ldi r24,lo8(325)
+  60 0020 91E0      		ldi r25,hi8(325)
+  61 0022 9BBD      		out 74+1-32,r25
+  62 0024 8ABD      		out 74-32,r24
+  63               	/* epilogue start */
+  64               	.LM10:
+  65 0026 0895      		ret
+  66               	.LFE1:
+  68               	.global	Servo_inc
+  70               	Servo_inc:
+  71               	.LFB2:
+  72               	.LM11:
+  73               	/* prologue: function */
+  74               	/* frame size = 0 */
+  75               	/* stack size = 0 */
+  76               	.L__stack_usage = 0
+  77               	.LM12:
+  78 0028 8AB5      		in r24,74-32
+  79 002a 9BB5      		in r25,74+1-32
+  80 002c 21E0      		ldi r18,hi8(325)
+  81 002e 8534      		cpi r24,lo8(325)
+  82 0030 9207      		cpc r25,r18
+  83 0032 00F4      		brsh .L3
+  84               	.LM13:
+  85 0034 8AB5      		in r24,74-32
+  86 0036 9BB5      		in r25,74+1-32
+  87 0038 0A96      		adiw r24,10
+  88 003a 9BBD      		out 74+1-32,r25
+  89 003c 8ABD      		out 74-32,r24
+  90               	.L3:
+  91 003e 0895      		ret
+  92               	.LFE2:
+  94               	.global	Servo_dec
+  96               	Servo_dec:
+  97               	.LFB3:
+  98               	.LM14:
+  99               	/* prologue: function */
+ 100               	/* frame size = 0 */
+ 101               	/* stack size = 0 */
+ 102               	.L__stack_usage = 0
+ 103               	.LM15:
+ 104 0040 8AB5      		in r24,74-32
+ 105 0042 9BB5      		in r25,74+1-32
+ 106 0044 8F3F      		cpi r24,255
+ 107 0046 9105      		cpc r25,__zero_reg__
+ 108 0048 00F0      		brlo .L5
+ 109               	.LM16:
+ 110 004a 8AB5      		in r24,74-32
+ 111 004c 9BB5      		in r25,74+1-32
+ 112 004e 0A97      		sbiw r24,10
+ 113 0050 9BBD      		out 74+1-32,r25
+ 114 0052 8ABD      		out 74-32,r24
+ 115               	.L5:
+ 116 0054 0895      		ret
+ 117               	.LFE3:
+ 119               	.global	Servo_setPos
+ 121               	Servo_setPos:
+ 122               	.LFB4:
+ 123               	.LM17:
+ 124               	.LVL0:
+ 125               	/* prologue: function */
+ 126               	/* frame size = 0 */
+ 127               	/* stack size = 0 */
+ 128               	.L__stack_usage = 0
+ 129               	.LM18:
+ 130 0056 21E0      		ldi r18,hi8(326)
+ 131 0058 8634      		cpi r24,lo8(326)
+ 132 005a 9207      		cpc r25,r18
+ 133 005c 00F0      		brlo .L8
+ 134               	.LM19:
+ 135 005e 85E4      		ldi r24,lo8(325)
+ 136 0060 91E0      		ldi r25,hi8(325)
+ 137               	.LVL1:
+ 138 0062 00C0      		rjmp .L10
+ 139               	.LVL2:
+ 140               	.L8:
+ 141               	.LM20:
+ 142 0064 8E3F      		cpi r24,254
+ 143 0066 9105      		cpc r25,__zero_reg__
+ 144 0068 00F4      		brsh .L10
+ 145               	.LM21:
+ 146 006a 8EEF      		ldi r24,lo8(254)
+ 147 006c 90E0      		ldi r25,hi8(254)
+ 148               	.LVL3:
+ 149               	.L10:
+ 150               	.LM22:
+ 151 006e 9BBD      		out 74+1-32,r25
+ 152 0070 8ABD      		out 74-32,r24
+ 153 0072 0895      		ret
+ 154               	.LFE4:
+ 212               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Servo.c
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:2      *ABS*:0000003f __SREG__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:3      *ABS*:0000003e __SP_H__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:4      *ABS*:0000003d __SP_L__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:5      *ABS*:00000034 __CCP__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:6      *ABS*:00000000 __tmp_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:7      *ABS*:00000001 __zero_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:18     .text:00000000 Servo_init
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:51     .text:0000001e Servo_reset
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:70     .text:00000028 Servo_inc
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:96     .text:00000040 Servo_dec
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccCoFkMF.s:121    .text:00000056 Servo_setPos
+
+UNDEFINED SYMBOLS
+Timer1_initializeFastPwm

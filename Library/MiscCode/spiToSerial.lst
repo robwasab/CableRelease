@@ -1,0 +1,184 @@
+   1               		.file	"spiToSerial.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	delay
+  18               	delay:
+  19               	.LFB0:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	/* stack size = 0 */
+  25               	.L__stack_usage = 0
+  26 0000 9B01      		movw r18,r22
+  27 0002 AC01      		movw r20,r24
+  28               	.LVL1:
+  29               	.LBB2:
+  30               	.LM2:
+  31 0004 80E0      		ldi r24,lo8(0)
+  32 0006 90E0      		ldi r25,hi8(0)
+  33 0008 DC01      		movw r26,r24
+  34 000a 00C0      		rjmp .L2
+  35               	.LVL2:
+  36               	.L4:
+  37               	.LM3:
+  38 000c 64E6      		ldi r22,lo8(100)
+  39 000e 70E0      		ldi r23,hi8(100)
+  40               	.L3:
+  41               	.LBB3:
+  42               	.LM4:
+  43               	/* #APP */
+  44               	 ;  12 "spiToSerial.c" 1
+  45 0010 0000      		nop
+  46               	 ;  0 "" 2
+  47               	/* #NOAPP */
+  48 0012 6150      		subi r22,lo8(-(-1))
+  49 0014 7040      		sbci r23,hi8(-(-1))
+  50               	.LM5:
+  51 0016 01F4      		brne .L3
+  52               	.LBE3:
+  53               	.LM6:
+  54 0018 0196      		adiw r24,1
+  55 001a A11D      		adc r26,__zero_reg__
+  56 001c B11D      		adc r27,__zero_reg__
+  57               	.LVL3:
+  58               	.L2:
+  59               	.LM7:
+  60 001e 8217      		cp r24,r18
+  61 0020 9307      		cpc r25,r19
+  62 0022 A407      		cpc r26,r20
+  63 0024 B507      		cpc r27,r21
+  64 0026 00F0      		brlo .L4
+  65               	/* epilogue start */
+  66               	.LBE2:
+  67               	.LM8:
+  68 0028 0895      		ret
+  69               	.LFE0:
+  71               	.global	UART_sendChar
+  73               	UART_sendChar:
+  74               	.LFB1:
+  75               	.LM9:
+  76               	/* prologue: function */
+  77               	/* frame size = 0 */
+  78               	/* stack size = 0 */
+  79               	.L__stack_usage = 0
+  80               	.LVL4:
+  81               	.L7:
+  82               	.LM10:
+  83 002a 5D9B      		sbis 43-32,5
+  84 002c 00C0      		rjmp .L7
+  85               	.LM11:
+  86 002e 8CB9      		out 44-32,r24
+  87               	.L8:
+  88               	.LM12:
+  89 0030 5E9B      		sbis 43-32,6
+  90 0032 00C0      		rjmp .L8
+  91               	/* epilogue start */
+  92               	.LM13:
+  93 0034 0895      		ret
+  94               	.LFE1:
+  96               	.global	UART_sendByte
+  98               	UART_sendByte:
+  99               	.LFB2:
+ 100               	.LM14:
+ 101               	/* prologue: function */
+ 102               	/* frame size = 0 */
+ 103               	/* stack size = 0 */
+ 104               	.L__stack_usage = 0
+ 105               	.LVL5:
+ 106               	.L12:
+ 107               	.LM15:
+ 108 0036 5D9B      		sbis 43-32,5
+ 109 0038 00C0      		rjmp .L12
+ 110               	.LM16:
+ 111 003a 8CB9      		out 44-32,r24
+ 112               	.L13:
+ 113               	.LM17:
+ 114 003c 5E9B      		sbis 43-32,6
+ 115 003e 00C0      		rjmp .L13
+ 116               	/* epilogue start */
+ 117               	.LM18:
+ 118 0040 0895      		ret
+ 119               	.LFE2:
+ 121               	.global	initialize
+ 123               	initialize:
+ 124               	.LFB3:
+ 125               	.LM19:
+ 126               	/* prologue: function */
+ 127               	/* frame size = 0 */
+ 128               	/* stack size = 0 */
+ 129               	.L__stack_usage = 0
+ 130               	.LM20:
+ 131 0042 82E0      		ldi r24,lo8(2)
+ 132 0044 8BB9      		out 43-32,r24
+ 133               	.LM21:
+ 134 0046 88E0      		ldi r24,lo8(8)
+ 135 0048 8AB9      		out 42-32,r24
+ 136               	.LM22:
+ 137 004a 86E0      		ldi r24,lo8(6)
+ 138 004c 83B9      		out 35-32,r24
+ 139               	.LM23:
+ 140 004e 81E0      		ldi r24,lo8(1)
+ 141 0050 82B9      		out 34-32,r24
+ 142               	.LM24:
+ 143 0052 80EA      		ldi r24,lo8(-96)
+ 144 0054 89B9      		out 41-32,r24
+ 145               	/* epilogue start */
+ 146               	.LM25:
+ 147 0056 0895      		ret
+ 148               	.LFE3:
+ 150               	.global	main
+ 152               	main:
+ 153               	.LFB4:
+ 154               	.LM26:
+ 155 0058 CF93      		push r28
+ 156               	/* prologue: function */
+ 157               	/* frame size = 0 */
+ 158               	/* stack size = 1 */
+ 159               	.L__stack_usage = 1
+ 160               	.LM27:
+ 161 005a 82E0      		ldi r24,lo8(2)
+ 162 005c 81BB      		out 49-32,r24
+ 163               	.LM28:
+ 164 005e 00D0      		rcall initialize
+ 165               	.LVL6:
+ 166               	.LM29:
+ 167 0060 80E0      		ldi r24,lo8(0)
+ 168               	.LVL7:
+ 169               	.L18:
+ 170               	.LM30:
+ 171 0062 C82F      		mov r28,r24
+ 172 0064 CF5F      		subi r28,lo8(-(1))
+ 173               	.LVL8:
+ 174 0066 00D0      		rcall UART_sendByte
+ 175               	.LM31:
+ 176 0068 60E1      		ldi r22,lo8(10000)
+ 177 006a 77E2      		ldi r23,hi8(10000)
+ 178 006c 80E0      		ldi r24,hlo8(10000)
+ 179 006e 90E0      		ldi r25,hhi8(10000)
+ 180 0070 00D0      		rcall delay
+ 181               	.LM32:
+ 182 0072 8C2F      		mov r24,r28
+ 183 0074 00C0      		rjmp .L18
+ 184               	.LFE4:
+ 242               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 spiToSerial.c
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:2      *ABS*:0000003f __SREG__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:3      *ABS*:0000003e __SP_H__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:4      *ABS*:0000003d __SP_L__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:5      *ABS*:00000034 __CCP__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:6      *ABS*:00000000 __tmp_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:7      *ABS*:00000001 __zero_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:18     .text:00000000 delay
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:73     .text:0000002a UART_sendChar
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:98     .text:00000036 UART_sendByte
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:123    .text:00000042 initialize
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccoKQCiw.s:152    .text:00000058 main
+
+NO UNDEFINED SYMBOLS

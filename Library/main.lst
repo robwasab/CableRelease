@@ -1,0 +1,113 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB0:
+  20               	.LM1:
+  21 0000 EF92      		push r14
+  22 0002 FF92      		push r15
+  23 0004 0F93      		push r16
+  24 0006 1F93      		push r17
+  25 0008 DF93      		push r29
+  26 000a CF93      		push r28
+  27 000c CDB7      		in r28,__SP_L__
+  28 000e DEB7      		in r29,__SP_H__
+  29 0010 A097      		sbiw r28,32
+  30 0012 0FB6      		in __tmp_reg__,__SREG__
+  31 0014 F894      		cli
+  32 0016 DEBF      		out __SP_H__,r29
+  33 0018 0FBE      		out __SREG__,__tmp_reg__
+  34 001a CDBF      		out __SP_L__,r28
+  35               	/* prologue: function */
+  36               	/* frame size = 32 */
+  37               	/* stack size = 38 */
+  38               	.L__stack_usage = 38
+  39               	.LM2:
+  40 001c 82E0      		ldi r24,lo8(2)
+  41 001e 81BB      		out 49-32,r24
+  42               	.LM3:
+  43 0020 89E1      		ldi r24,lo8(25)
+  44 0022 87BB      		out 55-32,r24
+  45               	.LM4:
+  46 0024 00D0      		rcall UART_initialize
+  47               	.LM5:
+  48 0026 82E0      		ldi r24,lo8(2)
+  49 0028 00D0      		rcall Timer1_initializeFastPwm
+  50               	.LM6:
+  51 002a 00D0      		rcall Timer0_initialize
+  52               	.LM7:
+  53 002c 00D0      		rcall SPI_initialize
+  54               	.LM8:
+  55 002e 00D0      		rcall SD_initialize
+  56 0030 00D0      		rcall UART_sendByte
+  57               	.LM9:
+  58               	/* #APP */
+  59               	 ;  23 "main.c" 1
+  60 0032 7894      		sei
+  61               	 ;  0 "" 2
+  62               	.LVL0:
+  63               	.LM10:
+  64               	/* #NOAPP */
+  65 0034 7E01      		movw r14,r28
+  66 0036 0894      		sec
+  67 0038 E11C      		adc r14,__zero_reg__
+  68 003a F11C      		adc r15,__zero_reg__
+  69 003c 80E2      		ldi r24,lo8(32)
+  70 003e F701      		movw r30,r14
+  71 0040 1192      		st Z+,__zero_reg__
+  72 0042 8A95      	        dec r24
+  73 0044 01F4      		brne .-6
+  74               	.LM11:
+  75 0046 65E0      		ldi r22,lo8(5)
+  76 0048 70E0      		ldi r23,hi8(5)
+  77 004a 80E0      		ldi r24,hlo8(5)
+  78 004c 90E0      		ldi r25,hhi8(5)
+  79 004e 45E5      		ldi r20,lo8(85)
+  80 0050 50E0      		ldi r21,hi8(85)
+  81 0052 9701      		movw r18,r14
+  82 0054 00E2      		ldi r16,lo8(32)
+  83 0056 10E0      		ldi r17,hi8(32)
+  84 0058 00D0      		rcall SD_read
+  85               	.LM12:
+  86 005a 8E01      		movw r16,r28
+  87 005c 0F5D      		subi r16,lo8(-(33))
+  88 005e 1F4F      		sbci r17,hi8(-(33))
+  89               	.LVL1:
+  90               	.L2:
+  91               	.LM13:
+  92 0060 F701      		movw r30,r14
+  93 0062 8191      		ld r24,Z+
+  94 0064 7F01      		movw r14,r30
+  95 0066 00D0      		rcall UART_sendByte
+  96               	.LM14:
+  97 0068 E016      		cp r14,r16
+  98 006a F106      		cpc r15,r17
+  99 006c 01F4      		brne .L2
+ 100               	.L5:
+ 101 006e 00C0      		rjmp .L5
+ 102               	.LFE0:
+ 128               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccvq2tQ7.s:2      *ABS*:0000003f __SREG__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccvq2tQ7.s:3      *ABS*:0000003e __SP_H__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccvq2tQ7.s:4      *ABS*:0000003d __SP_L__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccvq2tQ7.s:5      *ABS*:00000034 __CCP__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccvq2tQ7.s:6      *ABS*:00000000 __tmp_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccvq2tQ7.s:7      *ABS*:00000001 __zero_reg__
+/var/folders/-N/-Na1ohyTGNODDnKvS0KdQU+++TI/-Tmp-//ccvq2tQ7.s:18     .text:00000000 main
+
+UNDEFINED SYMBOLS
+UART_initialize
+Timer1_initializeFastPwm
+Timer0_initialize
+SPI_initialize
+SD_initialize
+UART_sendByte
+SD_read
